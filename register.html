@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sports Trial Registration</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.register-section{
+
+max-width:900px;
+margin:60px auto;
+background:#fff;
+padding:40px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+.register-section h1{
+
+text-align:center;
+margin-bottom:30px;
+color:#0b3d91;
+
+}
+
+form{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+
+}
+
+.full{
+
+grid-column:1/3;
+
+}
+
+label{
+
+font-weight:600;
+margin-bottom:6px;
+display:block;
+
+}
+
+input,select,textarea{
+
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+
+}
+
+textarea{
+
+height:120px;
+
+}
+
+button{
+
+background:#0b3d91;
+color:white;
+padding:14px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:17px;
+
+}
+
+button:hover{
+
+background:#072b69;
+
+}
+
+@media(max-width:768px){
+
+form{
+
+grid-template-columns:1fr;
+
+}
+
+.full{
+
+grid-column:1;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+
+🏆 Sports Trials
+
+</div>
+
+</header>
+
+<section class="register-section">
+
+<h1>
+
+Player Registration
+
+</h1>
+
+<form id="registrationForm">
+
+<div>
+
+<label>Full Name</label>
+
+<input type="text" required>
+
+</div>
+
+<div>
+
+<label>Email</label>
+
+<input type="email" required>
+
+</div>
+
+<div>
+
+<label>Mobile Number</label>
+
+<input type="tel" required>
+
+</div>
+
+<div>
+
+<label>Date of Birth</label>
+
+<input type="date" required>
+
+</div>
+
+<div>
+
+<label>Gender</label>
+
+<select required>
+
+<option value="">Select</option>
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Sport</label>
+
+<select required>
+
+<option>Select Sport</option>
+
+<option>Cricket</option>
+
+<option>Football</option>
+
+<option>Volleyball</option>
+
+<option>Basketball</option>
+
+<option>Badminton</option>
+
+<option>Athletics</option>
+
+<option>Kabaddi</option>
+
+<option>Hockey</option>
+
+<option>Boxing</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>State</label>
+
+<input type="text">
+
+</div>
+
+<div>
+
+<label>District</label>
+
+<input type="text">
+
+</div>
+
+<div class="full">
+
+<label>Address</label>
+
+<textarea></textarea>
+
+</div>
+
+<div>
+
+<label>Upload Photo</label>
+
+<input type="file">
+
+</div>
+
+<div>
+
+<label>Upload ID Proof</label>
+
+<input type="file">
+
+</div>
+
+<div class="full">
+
+<button type="submit">
+
+Register Now
+
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+<script>
+
+document.getElementById("registrationForm")
+
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Registration Submitted Successfully!");
+
+this.reset();
+
+});
+
+</script>
+
+</body>
+</html>
