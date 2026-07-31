@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NCOE Athletics Selection Trials | Sports Trials Portal</title>
+    <title>NCOE Athletics Selection Trials | 3D Portal</title>
     
     <!-- CSS Link -->
     <link rel="stylesheet" href="css/style.css">
@@ -12,37 +12,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- 3D Background Libraries (Three.js & Vanta.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 </head>
 <body>
 
+    <!-- 3D Animated Background Container -->
+    <div id="vanta-bg"></div>
+
     <!-- ================= HEADER ================= -->
-    <header>
-        <div class="logo">
-            🏆 Sports Trials Portal
-        </div>
+    <header class="glass-nav">
+        <div class="logo">🏆 NCOE Sports Portal</div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="trials.html">Trials</a></li>
-                <li><a href="results.html">Results</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html" class="login-btn">Login</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#venues">Venues</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#ratings">Ratings</a></li>
+                <li><a href="#" class="login-btn">Login</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- ================= HERO ================= -->
-    <section class="hero">
-        <div class="overlay">
-            <div class="hero-content">
-                <span class="status open">🟢 Registration Open</span>
-                <h1>NCOE Athletics Selection Trials</h1>
-                <p>Sports Authority of India National Centre of Excellence</p>
-                <div class="hero-buttons">
-                    <a href="#register" class="btn-primary">Apply Now</a>
-                    <a href="pdf/ncoe-athletics.pdf" class="btn-secondary">Download Notification</a>
-                </div>
+    <section id="home" class="hero">
+        <div class="hero-content glass-card">
+            <span class="status open">🟢 Registration Open</span>
+            <h1>NCOE Athletics Selection Trials</h1>
+            <p>Sports Authority of India National Centre of Excellence</p>
+            <div class="hero-buttons">
+                <a href="#register" class="btn-primary">Apply Now</a>
+                <a href="#" class="btn-secondary">Download PDF</a>
             </div>
         </div>
     </section>
@@ -50,249 +52,22 @@
     <!-- ================= QUICK INFO ================= -->
     <section class="quick-info">
         <div class="container">
-            <div class="info-card">
-                <i class="fa-solid fa-calendar-days"></i>
-                <h3>Trial Dates</h3>
-                <p>09–18 February 2022 (Venue-wise schedule)</p>
-            </div>
-            <div class="info-card">
-                <i class="fa-solid fa-location-dot"></i>
-                <h3>Venues</h3>
-                <p>Bhopal, Patiala, Sonipat, Bangalore, Lucknow, Kolkata, Trivandrum & Dharamshala</p>
-            </div>
-            <div class="info-card">
-                <i class="fa-solid fa-users"></i>
-                <h3>Age Criteria</h3>
-                <p>16–21 Years</p>
-            </div>
-            <div class="info-card">
-                <i class="fa-solid fa-medal"></i>
-                <h3>Sport</h3>
-                <p>Athletics</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= ABOUT ================= -->
-    <section class="about-trial">
-        <div class="container" style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
-            <div class="left" style="flex: 1; min-width: 300px;">
-                <img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?ixlib=rb-4.0.3" alt="Athletics Trial" style="width: 100%; border-radius: 8px;">
-            </div>
-            <div class="right" style="flex: 1; min-width: 300px;">
-                <h2 style="text-align: left;">About This Trial</h2>
-                <p>The National Centre of Excellence (NCOE) Athletics Selection Trials are conducted to identify talented athletes for admission into Sports Authority of India residential training centres.</p>
-                <p>Selected athletes receive advanced coaching, scientific support, sports infrastructure, nutrition guidance, accommodation and educational assistance under the NCOE programme.</p>
-                <div class="highlights" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; font-weight: 500;">
-                    <div>✔ Residential Training</div>
-                    <div>✔ Expert Coaches</div>
-                    <div>✔ Sports Science Support</div>
-                    <div>✔ Nutrition Programme</div>
-                    <div>✔ Medical Facilities</div>
-                    <div>✔ Competition Exposure</div>
+            <div class="info-grid">
+                <div class="glass-card text-center">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <h3>Dates</h3>
+                    <p>09–18 Feb 2026</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= IMPORTANT INFORMATION ================= -->
-    <section class="important">
-        <div class="container">
-            <h2>Important Information</h2>
-            <div class="important-grid">
-                <div class="important-card">
-                    <h3>Registration</h3>
-                    <p>Eligible athletes must complete registration and report with all required documents.</p>
+                <div class="glass-card text-center">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>Venues</h3>
+                    <p>Multiple Cities</p>
                 </div>
-                <div class="important-card">
-                    <h3>Selection Process</h3>
-                    <p>Document verification, anthropometric assessment and event-specific performance trials.</p>
+                <div class="glass-card text-center">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>Age</h3>
+                    <p>16–21 Years</p>
                 </div>
-                <div class="important-card">
-                    <h3>Eligibility</h3>
-                    <p>Candidates must satisfy the age and sports performance requirements specified in the official notification.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= ELIGIBILITY SECTION ================= -->
-    <section class="eligibility">
-        <div class="container">
-            <h2>Eligibility Criteria</h2>
-            <p class="section-desc">Candidates must satisfy the age and sports performance requirements prescribed for the NCOE Athletics Selection Trials.</p>
-            <div class="eligibility-grid">
-                <div class="eligibility-card">
-                    <i class="fa-solid fa-user-check"></i>
-                    <h3>Age Criteria</h3>
-                    <p>16–21 Years<br>(Age as specified in the official notification)</p>
-                </div>
-                <div class="eligibility-card">
-                    <i class="fa-solid fa-medal"></i>
-                    <h3>Sports Performance</h3>
-                    <p>Represented India in recognized championships OR secured up to 8th position in Senior, Junior or Youth National Championships organized by AFI.</p>
-                </div>
-                <div class="eligibility-card">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <h3>Final Selection</h3>
-                    <p>Selection depends on merit, availability of seats and age verification as per SAI guidelines.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= REQUIRED DOCUMENTS ================= -->
-    <section class="documents">
-        <div class="container">
-            <h2>Required Documents</h2>
-            <p class="section-desc">Carry original documents along with self-attested photocopies.</p>
-            <div class="document-grid">
-                <div class="document-card">
-                    <i class="fa-solid fa-id-card"></i>
-                    <h4>Date of Birth Certificate</h4>
-                </div>
-                <div class="document-card">
-                    <i class="fa-solid fa-address-card"></i>
-                    <h4>Aadhaar Card</h4>
-                </div>
-                <div class="document-card">
-                    <i class="fa-solid fa-trophy"></i>
-                    <h4>Sports Achievement Certificates</h4>
-                </div>
-                <div class="document-card">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <h4>Educational Qualification</h4>
-                </div>
-                <div class="document-card">
-                    <i class="fa-solid fa-camera"></i>
-                    <h4>Four Passport Photos</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= NCOE VENUES ================= -->
-    <section class="venues">
-        <div class="container">
-            <h2>NCOE Trial Venues</h2>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>NCOE</th>
-                            <th>Category</th>
-                            <th>Major Events</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Bhopal</td><td>TOPS Residential</td><td>Middle Distance</td></tr>
-                        <tr><td>Patiala</td><td>TOPS Residential</td><td>Sprints, Horizontal Jumps, Throws, Combined Events</td></tr>
-                        <tr><td>Sonipat</td><td>TOPS Residential</td><td>Sprints, Throws, Race Walk</td></tr>
-                        <tr><td>Trivandrum</td><td>TOPS Residential</td><td>Sprints, Jumps, Middle Distance</td></tr>
-                        <tr><td>Bangalore</td><td>TOPS Residential</td><td>Sprints, Jumps, Race Walk</td></tr>
-                        <tr><td>Lucknow</td><td>Non-TOPS Residential</td><td>Middle & Long Distance</td></tr>
-                        <tr><td>Dharamshala</td><td>Girls Only</td><td>Middle Distance</td></tr>
-                        <tr><td>Kolkata</td><td>Non-TOPS Residential</td><td>Sprints & Combined Events</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= FACILITIES ================= -->
-    <section class="facilities">
-        <div class="container">
-            <h2>Facilities Available</h2>
-            <div class="facility-grid">
-                <div class="facility-card">
-                    <h3 style="font-size: 2rem;">🏠</h3>
-                    <h3>Residential Boarding</h3>
-                    <p>Accommodation and boarding for selected athletes.</p>
-                </div>
-                <div class="facility-card">
-                    <h3 style="font-size: 2rem;">🥗</h3>
-                    <h3>Nutrition</h3>
-                    <p>Individual nutrition plans prepared by experts.</p>
-                </div>
-                <div class="facility-card">
-                    <h3 style="font-size: 2rem;">🏋️</h3>
-                    <h3>World-Class Coaching</h3>
-                    <p>Training by experienced coaches and support staff.</p>
-                </div>
-                <div class="facility-card">
-                    <h3 style="font-size: 2rem;">🏥</h3>
-                    <h3>Medical Support</h3>
-                    <p>Physiotherapy, medical care and insurance coverage.</p>
-                </div>
-                <div class="facility-card">
-                    <h3 style="font-size: 2rem;">🎽</h3>
-                    <h3>Sports Kit</h3>
-                    <p>Sports equipment and training apparel.</p>
-                </div>
-                <div class="facility-card">
-                    <h3 style="font-size: 2rem;">🌍</h3>
-                    <h3>Competition Exposure</h3>
-                    <p>Participation opportunities at higher-level competitions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= SELECTION TRIAL SCHEDULE ================= -->
-    <section class="schedule">
-        <div class="container">
-            <h2>Selection Trial Schedule</h2>
-            <p class="section-desc">Candidates should report on time with all required documents.</p>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Day</th>
-                            <th>Activities</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Day 1</strong></td>
-                            <td>Registration, Document Verification, Form Submission, Anthropometric Assessment (Height, Weight, Arm Span, BMI, etc.)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Day 2</strong></td>
-                            <td>Event Specific Tests, Performance Trials, Evaluation by Coaches, Merit Assessment</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= EVENT SPECIFIC TESTS ================= -->
-    <section class="event-tests">
-        <div class="container">
-            <h2>Event Specific Selection Tests</h2>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>Selection Tests</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>100m / 200m</td><td>30m Standing Sprint, 10 Bounds, Standing Broad Jump, Event Trial</td></tr>
-                        <tr><td>400m / 600m</td><td>30m Sprint, 10 Bounds, Standing Broad Jump, Event Trial</td></tr>
-                        <tr><td>800m / 1500m</td><td>30m Sprint, 10 Bounds, Standing Broad Jump, Event Trial</td></tr>
-                        <tr><td>Long Distance</td><td>30m Sprint, 10 Bounds, Standing Broad Jump, Event Trial</td></tr>
-                        <tr><td>Long Jump</td><td>20m Sprint, 10 Bounds, Standing Broad Jump, Event Trial</td></tr>
-                        <tr><td>High Jump</td><td>30m Sprint, 10 Bounds, Standing Vertical Jump, Event Trial</td></tr>
-                        <tr><td>Pole Vault</td><td>30m Sprint, Standing Vertical Jump, Event Trial</td></tr>
-                        <tr><td>Shot Put</td><td>Standing Throw + Event Throw</td></tr>
-                        <tr><td>Discus Throw</td><td>Standing Throw + Event Throw</td></tr>
-                        <tr><td>Hammer Throw</td><td>Standing Throw + Event Throw</td></tr>
-                        <tr><td>Javelin Throw</td><td>Standing Throw + Event Throw</td></tr>
-                        <tr><td>Race Walk</td><td>Standing Broad Jump, 400m Race Walk, Event Trial</td></tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </section>
@@ -300,99 +75,63 @@
     <!-- ================= REGISTRATION FORM ================= -->
     <section id="register" class="registration">
         <div class="container">
-            <h2>Online Registration</h2>
-            <form>
-                <div class="form-grid">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="text" placeholder="Father's Name" required>
-                    <input type="text" placeholder="Mother's Name">
-                    <input type="date" required>
-                    <select>
-                        <option>Gender</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                    <input type="text" placeholder="State">
-                    <input type="text" placeholder="District">
-                    <input type="text" placeholder="Athletics Event">
-                    <input type="number" placeholder="Height (cm)">
-                    <input type="number" placeholder="Weight (kg)">
-                    <input type="text" placeholder="Blood Group">
-                    <input type="email" placeholder="Email">
-                    <input type="tel" placeholder="Mobile Number">
-                    <input type="text" placeholder="Aadhaar Number">
-                    <textarea placeholder="Sports Achievements"></textarea>
-                    <textarea placeholder="Residential Address"></textarea>
-                    <input type="file" title="Upload Photo">
-                    <input type="file" title="Upload Aadhaar">
-                    <input type="file" title="Upload Certificate">
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 8px;">Submit Registration</button>
-            </form>
+            <div class="glass-card form-container">
+                <h2 class="text-center">Online Registration</h2>
+                <form id="registration-form">
+                    <div class="form-grid">
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="text" placeholder="Father's Name" required>
+                        <input type="date" required>
+                        <select>
+                            <option>Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                        <input type="text" placeholder="State">
+                        <input type="text" placeholder="Athletics Event">
+                        <input type="email" placeholder="Email Address">
+                        <input type="tel" placeholder="Mobile Number">
+                        <input type="text" placeholder="Aadhaar Number">
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Submit Application</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
-    <section class="contact">
+    <!-- ================= FUNCTIONAL RATINGS SYSTEM ================= -->
+    <section id="ratings" class="ratings-section">
         <div class="container">
-            <h2>Need Assistance?</h2>
-            <div class="contact-grid">
-                <div class="info-card">
-                    <h3>Email</h3>
-                    <p>sportsportal@example.com</p>
+            <div class="glass-card rating-card text-center">
+                <h2>Rate Your Experience</h2>
+                <p>Help us improve the NCOE Portal.</p>
+                
+                <!-- This div hides after submission -->
+                <div id="rating-ui">
+                    <div class="star-rating">
+                        <i class="fa-regular fa-star" data-rating="1"></i>
+                        <i class="fa-regular fa-star" data-rating="2"></i>
+                        <i class="fa-regular fa-star" data-rating="3"></i>
+                        <i class="fa-regular fa-star" data-rating="4"></i>
+                        <i class="fa-regular fa-star" data-rating="5"></i>
+                    </div>
+                    <p id="rating-feedback-text" class="feedback-text">Select a star to rate</p>
+                    <button id="submit-rating-btn" class="btn-primary" disabled>Submit Rating</button>
                 </div>
-                <div class="info-card">
-                    <h3>Phone</h3>
-                    <p>+91 XXXXX XXXXX</p>
-                </div>
-                <div class="info-card">
-                    <h3>Working Hours</h3>
-                    <p>Mon – Sat (9 AM – 6 PM)</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ================= FAQ ================= -->
-    <section class="faq">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            <div class="info-card" style="margin-bottom: 15px; text-align: left;">
-                <h3 style="color: var(--primary-color);">Who can apply?</h3>
-                <p>Eligible athletes meeting the age and performance criteria specified in the official notification.</p>
+                <!-- Success Message (Hidden by default) -->
+                <div id="rating-success" style="display: none;">
+                    <h3 style="color: #4ade80; margin-bottom: 10px;">✔ Rating Submitted!</h3>
+                    <p>You rated this portal: <strong id="user-final-rating">0</strong> / 5 Stars</p>
+                    <p class="avg-rating">Current Average Rating: <strong>4.8 / 5</strong> 🌟</p>
+                </div>
             </div>
-            <div class="info-card" style="margin-bottom: 15px; text-align: left;">
-                <h3 style="color: var(--primary-color);">Do I need original documents?</h3>
-                <p>Yes. Carry original documents along with self-attested photocopies for verification.</p>
-            </div>
-            <div class="info-card" style="margin-bottom: 15px; text-align: left;">
-                <h3 style="color: var(--primary-color);">How will final selection be made?</h3>
-                <p>Selection is based on merit, event performance, seat availability, and age verification.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= RATINGS / FEEDBACK (NEW) ================= -->
-    <section class="ratings-section" style="background-color: var(--white); padding: 40px 0;">
-        <div class="container text-center">
-            <h2>Rate Your Experience</h2>
-            <p class="section-desc">How was your experience using the NCOE Sports Trials Portal?</p>
-            <div class="star-rating">
-                <i class="fa-regular fa-star" data-rating="1"></i>
-                <i class="fa-regular fa-star" data-rating="2"></i>
-                <i class="fa-regular fa-star" data-rating="3"></i>
-                <i class="fa-regular fa-star" data-rating="4"></i>
-                <i class="fa-regular fa-star" data-rating="5"></i>
-            </div>
-            <p id="rating-message" style="margin-top: 15px; min-height: 30px;"></p>
         </div>
     </section>
 
     <!-- ================= FOOTER ================= -->
-    <footer>
-        <div class="container">
-            <p>© 2026 Sports Trials Portal | Built by Khairul Nobi</p>
-        </div>
+    <footer class="glass-nav text-center" style="padding: 20px; margin-top: 40px;">
+        <p>© 2026 Sports Trials Portal | Built by Khairul Nobi</p>
     </footer>
 
     <!-- JavaScript Link -->
