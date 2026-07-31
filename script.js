@@ -1,117 +1,163 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     
-    // =========================================
-    // 1. INITIALIZE 3D ANIMATED BACKGROUND
-    // =========================================
-    // Uses Vanta.js to create a glowing 3D network effect
-    if (typeof VANTA !== 'undefined') {
-        VANTA.NET({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x3b82f6,      // Blue connecting lines
-            backgroundColor: 0x020617, // Deep dark background
-            points: 15.00,
-            maxDistance: 25.00,
-            spacing: 18.00
-        });
-    }
+    // 1. PRELOADER & NAVBAR SCROLL EFFECT
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
+        }, 1200); // Premium delay
+    });
 
-    // =========================================
-    // 2. FUNCTIONAL RATINGS SYSTEM
-    // =========================================
-    const stars = document.querySelectorAll('.star-rating i');
-    const feedbackText = document.getElementById('rating-feedback-text');
-    const submitBtn = document.getElementById('submit-rating-btn');
-    const ratingUI = document.getElementById('rating-ui');
-    const ratingSuccess = document.getElementById('rating-success');
-    const finalRatingText = document.getElementById('user-final-rating');
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+    });
 
-    let currentRating = 0;
-
-    // A. Check if user already rated before (LocalStorage)
-    const savedRating = localStorage.getItem('ncoe_user_rating');
-    if (savedRating) {
-        // If already rated, hide UI and show success directly
-        ratingUI.style.display = 'none';
-        finalRatingText.innerText = savedRating;
-        ratingSuccess.style.display = 'block';
-    }
-
-    // B. Star Hover and Click Logic
-    stars.forEach((star, index) => {
-        // Hover effect
-        star.addEventListener('mouseover', () => {
-            updateStars(index + 1);
+    // 2. PREMIUM 3D TILT EFFECT ON CARDS
+    const tiltCards = document.querySelectorAll('.glass-card');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            let rect = card.getBoundingClientRect();
+            let x = e.clientX - rect.left; 
+            let y = e.clientY - rect.top;
+            
+            // Calculate rotation limits (max 15 degrees)
+            let xOffset = ((x / rect.width) - 0.5) * 30; 
+            let yOffset = ((y / rect.height) - 0.5) * -30;
+            
+            card.style.transform = `perspective(1000px) rotateY(${xOffset}deg) rotateX(${yOffset}deg) translateY(-10px) scale(1.02)`;
         });
 
-        // Mouse out effect
-        star.addEventListener('mouseout', () => {
-            updateStars(currentRating);
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px) scale(1)`;
+            card.style.transition = `transform 0.5s ease`; 
         });
 
-        // Click effect
-        star.addEventListener('click', () => {
-            currentRating = index + 1;
-            updateStars(currentRating);
-            submitBtn.disabled = false; // Enable submit button
-
-            // Fun feedback texts
-            const feedbacks = [
-                "1 Star - We will work harder! 😞",
-                "2 Stars - Needs Improvement 😐",
-                "3 Stars - Good, but can be better 🙂",
-                "4 Stars - Great Experience! 😃",
-                "5 Stars - Absolutely Awesome! 🌟"
-            ];
-            feedbackText.innerText = feedbacks[currentRating - 1];
-            feedbackText.style.color = "#fff";
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = `transform 0.1s ease`; // Quick snap when entering
         });
     });
 
-    function updateStars(count) {
-        stars.forEach((s, i) => {
-            if (i < count) {
-                s.classList.remove('fa-regular');
-                s.classList.add('fa-solid', 'active');
-            } else {
-                s.classList.remove('fa-solid', 'active');
-                s.classList.add('fa-regular');
+    // 3. PARTICLES.JS (Ensure library is linked in HTML)
+    if(typeof particlesJS !== "undefined") {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#0ea5e9" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.6, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#0ea5e9", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { 
+                    "onhover": { "enable": true, "mode": "grab" }, 
+                    "onclick": { "enable": true, "mode": "push" } 
+                },
+                "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+    }
+
+    // 4. SCROLL REVEAL ANIMATION (Smooth Fade-in)
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        reveals.forEach(element => {
+            var windowHeight = window.innerHeight;
+            var elementTop = element.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+                element.classList.add("active");
             }
         });
     }
+    window.addEventListener("scroll", reveal);
+    reveal(); // Fire once on load
 
-    // C. Submit Rating Logic
-    submitBtn.addEventListener('click', () => {
-        if(currentRating > 0) {
-            // Save to LocalStorage (Simulating a backend save)
-            localStorage.setItem('ncoe_user_rating', currentRating);
+    // 5. ANIMATED NUMBER COUNTERS
+    const counters = document.querySelectorAll('.counter');
+    const startCounters = (entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                const counter = entry.target;
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / 150; // Speed adjustment
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target + "+";
+                    }
+                };
+                updateCount();
+                observer.unobserve(counter);
+            }
+        });
+    };
+    const counterObserver = new IntersectionObserver(startCounters, { threshold: 0.5 });
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // 6. CUSTOM TOAST NOTIFICATION & FORM SUBMIT
+    const form = document.getElementById('premium-form');
+    
+    // Create Toast Element dynamically
+    const toast = document.createElement('div');
+    toast.id = "custom-toast";
+    toast.innerHTML = `<i class="fa-solid fa-circle-check" style="font-size: 1.5rem;"></i> Application Submitted Successfully!`;
+    document.body.appendChild(toast);
+
+    if(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.submit-btn');
+            const originalText = btn.innerHTML;
             
-            // UI Transition
-            ratingUI.style.opacity = '0';
+            // Loading State
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing Securely...';
+            btn.style.opacity = '0.8';
+            btn.style.pointerEvents = 'none';
+            
             setTimeout(() => {
-                ratingUI.style.display = 'none';
-                finalRatingText.innerText = currentRating;
-                ratingSuccess.style.display = 'block';
-                ratingSuccess.style.animation = 'fadeIn 0.5s ease-in';
-            }, 300);
-        }
+                // Show Custom Toast (No more ugly alerts)
+                toast.classList.add('show');
+                
+                setTimeout(() => { toast.classList.remove('show'); }, 4000); // Hide after 4s
+
+                this.reset(); // Reset form
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
+                btn.style.pointerEvents = 'all';
+            }, 2000); // Fake API delay
+        });
+    }
+
+    // 7. RATING SYSTEM
+    const submitRatingBtn = document.getElementById('submit-rating');
+    const starInputs = document.querySelectorAll('.stars input');
+    let selectedRating = 0;
+
+    starInputs.forEach(input => {
+        input.addEventListener('change', (e) => {
+            selectedRating = e.target.value;
+        });
     });
 
-    // =========================================
-    // 3. FORM SUBMISSION DEMO
-    // =========================================
-    const form = document.getElementById('registration-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("Application Submitted Successfully!");
-            form.reset();
+    if(submitRatingBtn) {
+        submitRatingBtn.addEventListener('click', () => {
+            if(selectedRating === 0) {
+                alert("Please select a star rating first!"); // This one stays alert for error catching
+                return;
+            }
+            document.getElementById('rating-form-area').style.display = 'none';
+            document.getElementById('final-star-count').innerText = selectedRating;
+            const successDiv = document.getElementById('rating-success');
+            successDiv.style.display = 'block';
         });
     }
 });
